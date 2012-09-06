@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
-    xmlns:u="http://www.ime.iiasa.ac.at/users"
     targetNamespace="http://www.ime.iiasa.ac.at/enrima/model/spec">
 
     <xs:complexType name="modelSpec">
