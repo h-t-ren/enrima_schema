@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima/solver/example"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima"
     xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
     xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
-    targetNamespace="http://www.ime.iiasa.ac.at/enrima/solver/example">
+    targetNamespace="http://www.ime.iiasa.ac.at/enrima">
     <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="data.xsd"/>
     <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="sms.xsd"/>
     
