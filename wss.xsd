@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima/solver/example"
+    xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
+    xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
+    xmlns:u="http://www.ime.iiasa.ac.at/users"
+    targetNamespace="http://www.ime.iiasa.ac.at/enrima/solver/example">
+    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="modelInst.xsd"/>
+    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="modelSpec.xsd"/>
+    
+    <xs:element name="getSMSRequest">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="idSMS" type="xs:int" minOccurs="1" maxOccurs="1" />
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getSMSResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="modelSpec" type="m:modelSpec" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+    <xs:element name="getEntiyValuesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="entityShortName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getEntiyValuesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="entitySpec" type="m:entitySpec" minOccurs="1" maxOccurs="1" />
+                <xs:element name="entityValue" type="i:entityValue"  maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="getSetMembersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="setShortName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getSetMembersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="member" type="i:memberDic" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+  
+    <xs:element name="storeSetMembersRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelUpdate" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idSetSpec" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="setMembers" type="i:setMembers" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="storeSetMembersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="storeEntityValuesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelUpdate" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="entityValue" type="i:entityValue"  maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="storeEntityValuesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>

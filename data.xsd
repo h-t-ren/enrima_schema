@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
+    xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
+    xmlns:u="http://www.ime.iiasa.ac.at/users"
+    targetNamespace="http://www.ime.iiasa.ac.at/enrima/model/instance">
+    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="ModelSpec.xsd"/>
+    <xs:complexType name="modelDataUpdate">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="idModelSpec" type="xs:int" />
+            <xs:element name="idParent" type="xs:int" />
+            <xs:element name="description" type="m:description"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="modelInstance">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="idModelDataUpdate" type="xs:int" />
+            <xs:element name="shortName" type="m:shortName"/>
+            <xs:element name="name" type="m:name"/>
+            <xs:element name="description" type="m:description"/>
+            <xs:element name="status" type="m:status"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="memberDic">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int" />
+            <xs:element name="code" type="xs:string" />
+            <xs:element name="description" type="m:description"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="setMembers">
+        <xs:sequence>
+           <!-- <xs:element name="setSpec" type="m:setSpec"/> -->
+            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="member" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="entityValue">
+        <xs:sequence>
+         <!--   <xs:element name="entitySpec" type="m:entitySpec" /> -->
+            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="value" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+</xs:schema>
