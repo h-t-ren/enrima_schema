@@ -2,7 +2,6 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima/solver/example"
     xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
     xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
-    xmlns:u="http://www.ime.iiasa.ac.at/users"
     targetNamespace="http://www.ime.iiasa.ac.at/enrima/solver/example">
     <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="modelInst.xsd"/>
     <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="modelSpec.xsd"/>

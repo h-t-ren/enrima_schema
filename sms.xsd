@@ -53,24 +53,6 @@
         </xs:sequence>
     </xs:complexType>
 
-
-    <xs:simpleType name="Permission">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="ADMINISTRATION"/>
-            <xs:enumeration value="CREATE"/>
-            <xs:enumeration value="DELETE"/>
-            <xs:enumeration value="WRITE"/>
-            <xs:enumeration value="READ"/>
-        </xs:restriction>
-    </xs:simpleType>
- 
-    <xs:simpleType name="location">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="sub"/>
-            <xs:enumeration value="sup"/>
-        </xs:restriction>
-    </xs:simpleType>
-    
     <xs:simpleType name="status">
         <xs:restriction base="xs:string">
             <xs:enumeration value="EDIT"/>
