@@ -3,8 +3,8 @@
     xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
     xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
     targetNamespace="http://www.ime.iiasa.ac.at/enrima/solver/example">
-    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="modelInst.xsd"/>
-    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="modelSpec.xsd"/>
+    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="data.xsd"/>
+    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="sms.xsd"/>
     
     <xs:element name="getSMSRequest">
         <xs:complexType>
