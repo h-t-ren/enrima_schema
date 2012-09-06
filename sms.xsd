@@ -7,8 +7,8 @@
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>
             <xs:element name="shortName" type="m:shortName"/>
-            <xs:element name="name" type="m:name"/>
-            <xs:element name="description" type="m:description"/>
+            <xs:element name="name" type="m:name" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
             <xs:element name="status" type="m:status"/>
             <xs:element name="setSpec" type="m:setSpec"  maxOccurs="unbounded"/>
             <xs:element name="entitySpec" type="m:entitySpec" maxOccurs="unbounded"/>
@@ -21,11 +21,11 @@
             <!--sub set-->
             <xs:element name="idParent" type="xs:int"/>
             <xs:element name="shortName" type="m:shortName"/>
-            <xs:element name="name" type="m:name"/>
-            <xs:element name="description" type="m:description"/>
+            <xs:element name="name" type="m:name" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
             <xs:element name="type" type="m:setSpecType"/>
             <!--for index sets-->
-            <xs:element name="iteratorContainer" type="m:iteratorContainer"/>
+            <xs:element name="iteratorContainer" type="m:iteratorContainer" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -33,16 +33,16 @@
         <xs:sequence>
             <xs:element name="id" type="xs:int"/>
             <xs:element name="shortName" type="m:shortName"/>
-            <xs:element name="name" type="m:name"/>
-            <xs:element name="description" type="m:description"/>
-            <xs:element name="idLowerBound" type="xs:int"/>
-            <xs:element name="idUpperBound" type="xs:int"/>
-            <xs:element name="constantValue" type="xs:double"/>
-            <xs:element name="iteratorContainer" type="m:iteratorContainer"/>
-            <xs:element name="role" type="m:entityRole"/>
-            <xs:element name="mathType" type="m:mathType"/>
-            <xs:element name="unit" type="xs:string"/>
-            <xs:element name="formula" type="xs:string"/>
+            <xs:element name="name" type="m:name" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="idLowerBound" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="idUpperBound" type="xs:int" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="constantValue" type="xs:double" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="iteratorContainer" type="m:iteratorContainer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="role" type="m:entityRole" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="mathType" type="m:mathType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="unit" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="formula" type="xs:string" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -91,21 +91,21 @@
 
     <xs:simpleType name="shortName">
         <xs:restriction base="xs:string">
-            <xs:minLength value="4"/>
+            <xs:minLength value="1"/>
             <xs:maxLength value="8"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="name">
         <xs:restriction base="xs:string">
-            <xs:minLength value="4"/>
+            <xs:minLength value="1"/>
             <xs:maxLength value="32"/>
         </xs:restriction>
     </xs:simpleType>
 
     <xs:simpleType name="description">
         <xs:restriction base="xs:string">
-            <xs:minLength value="4"/>
+            <xs:minLength value="1"/>
             <xs:maxLength value="512"/>
         </xs:restriction>
     </xs:simpleType>
