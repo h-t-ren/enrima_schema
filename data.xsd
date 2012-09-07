@@ -33,40 +33,44 @@
     <xs:complexType name="setMembers">
         <xs:sequence>
             <xs:element name="setShortName" type="xs:string"/> 
-            <xs:element name="tupleMembers" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:sequence>
-                        <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
-                            <xs:annotation><xs:documentation>only for index set, tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
-                        </xs:element>
-                        <xs:element name="members" type="xs:string" minOccurs="1" maxOccurs="1">
-                            <xs:annotation><xs:documentation>set members are seperated by , for example: AT,AU,PL</xs:documentation></xs:annotation>
-                        </xs:element>
-                    </xs:sequence>
-                </xs:complexType>
-            </xs:element>
-           
+            <xs:element name="tupleMembers" type="i:tupleMembers" minOccurs="0" maxOccurs="unbounded"/>   
         </xs:sequence>
     </xs:complexType>
-    
+        <xs:complexType  name="tupleMembers">
+            <xs:sequence>
+                <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation><xs:documentation>only for index set, tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
+                </xs:element>
+                <xs:element name="members" type="xs:string" minOccurs="1" maxOccurs="1">
+                    <xs:annotation><xs:documentation>set members are seperated by , for example: AT,AU,PL</xs:documentation></xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+   
     <xs:complexType name="entityValues">
         <xs:sequence>
             <xs:element name="entityShortName" type="xs:string"/> 
-            <xs:element name="tupleValue" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                <xs:sequence>
-                    <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
-                        <xs:annotation><xs:documentation>tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
-                    </xs:element>
-                    <xs:element name="value" type="xs:double"/>
-                </xs:sequence>
-                </xs:complexType>
-            </xs:element>
+            <xs:element name="tupleValues" type="i:tupleValues" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
+   
+        <xs:complexType  name="tupleValues">
+            <xs:sequence>
+                <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
+                    <xs:annotation><xs:documentation>tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
+                </xs:element>
+                <xs:element name="value" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
     
-
-    <xs:element name="modelData">
+        <xs:complexType name="tupleValue">
+            <xs:sequence>
+                <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="value" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+   
+        <xs:element name="modelData">
         <xs:annotation><xs:documentation>only for mockup</xs:documentation></xs:annotation>
         <xs:complexType>
             <xs:sequence>
@@ -75,7 +79,6 @@
                 <xs:element name="entityValues" type="i:entityValues" minOccurs="1" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
-        
     </xs:element>
     
     
