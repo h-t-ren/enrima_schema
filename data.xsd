@@ -34,14 +34,7 @@
         <xs:complexType name="tupleValue">
             <xs:sequence>
                 <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element name="value">
-                    <xs:complexType>
-                        <xs:choice>
-                            <xs:element name="intValue" type="xs:int"/>
-                            <xs:element name="doubleValue" type="xs:double"/>
-                        </xs:choice>
-                    </xs:complexType>
-                </xs:element> 
+                <xs:element name="value" type="i:value" /> 
             </xs:sequence>
         </xs:complexType>
     <xs:complexType name="setMembers">
