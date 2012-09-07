@@ -118,7 +118,7 @@
     <xs:simpleType name="mathType">
         <xs:restriction base="xs:string">
             <xs:enumeration value="INTEGER"/>
-            <xs:enumeration value="BINARY"/>
+          <!--  <xs:enumeration value="BINARY"/> -->
             <xs:enumeration value="REAL"/>
         </xs:restriction>
     </xs:simpleType>
