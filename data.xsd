@@ -7,18 +7,18 @@
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
             <xs:element name="idModelSpec" type="xs:int" />
-            <xs:element name="idParent" type="xs:int" />
-            <xs:element name="description" type="m:description"/>
+            <xs:element name="idParent" type="xs:int"   minOccurs="0" maxOccurs="1"/>
+            <xs:element name="description" type="m:description"  minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="modelInstance">
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
-            <xs:element name="idModelDataUpdate" type="xs:int" />
-            <xs:element name="shortName" type="m:shortName"/>
+            <xs:element name="idModelDataUpdate" type="xs:int"  minOccurs="1" maxOccurs="1"/>
+            <xs:element name="shortName" type="m:shortName"  minOccurs="0" maxOccurs="1"/>
             <xs:element name="name" type="m:name" minOccurs="0" maxOccurs="1"/>
             <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="status" type="m:status"/>
+            <xs:element name="status" type="m:status" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -32,18 +32,51 @@
 
     <xs:complexType name="setMembers">
         <xs:sequence>
-           <!-- <xs:element name="setSpec" type="m:setSpec"/> -->
-            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="member" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="setShortName" type="xs:string"/> 
+            <xs:element name="tupleMembers" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
+                            <xs:annotation><xs:documentation>only for index set, tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
+                        </xs:element>
+                        <xs:element name="members" type="xs:string" minOccurs="1" maxOccurs="1">
+                            <xs:annotation><xs:documentation>set members are seperated by , for example: AT,AU,PL</xs:documentation></xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+           
         </xs:sequence>
     </xs:complexType>
-
-    <xs:complexType name="entityValue">
+    
+    <xs:complexType name="entityValues">
         <xs:sequence>
-         <!--   <xs:element name="entitySpec" type="m:entitySpec" /> -->
-            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="value" type="xs:double"/>
+            <xs:element name="entityShortName" type="xs:string"/> 
+            <xs:element name="tupleValue" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="tuple" type="xs:string" minOccurs="0" maxOccurs="1">
+                        <xs:annotation><xs:documentation>tuple members are seperated by , for example: AT,2007</xs:documentation></xs:annotation>
+                    </xs:element>
+                    <xs:element name="value" type="xs:double"/>
+                </xs:sequence>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
+    
+
+    <xs:element name="modelData">
+        <xs:annotation><xs:documentation>only for mockup</xs:documentation></xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelInstance" type="xs:int" />
+                <xs:element name="setMembers" type="i:setMembers" minOccurs="1" maxOccurs="unbounded" />
+                <xs:element name="entityValues" type="i:entityValues" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+        
+    </xs:element>
+    
     
 </xs:schema>

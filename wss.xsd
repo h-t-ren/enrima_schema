@@ -21,7 +21,7 @@
         </xs:complexType>
     </xs:element>
    
-    <xs:element name="getEntiyValuesRequest">
+    <xs:element name="getEntityValuesRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1" />
@@ -29,11 +29,18 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:element name="getEntiyValuesResponse">
+    <xs:element name="getEntityValuesResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="entitySpec" type="m:entitySpec" minOccurs="1" maxOccurs="1" />
-                <xs:element name="entityValue" type="i:entityValue"  maxOccurs="unbounded"/>
+                <xs:element name="tupleValue"   minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="value" type="xs:double"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -72,13 +79,20 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
+       
     
     <xs:element name="storeEntityValuesRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="idModelUpdate" type="xs:int" minOccurs="1" maxOccurs="1" />
-                <xs:element name="entityValue" type="i:entityValue"  maxOccurs="unbounded"/>
+                <xs:element name="tupleValue"   minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
+                            <xs:element name="value" type="xs:double"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
