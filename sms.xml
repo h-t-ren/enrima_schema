@@ -1,6 +1,10 @@
-<modelSpec xmlns="http://www.ime.iiasa.ac.at/enrima/model/spec"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="../sms.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<e:getSMSResponse xmlns:e="http://www.ime.iiasa.ac.at/enrima"
+    xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
+    xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ime.iiasa.ac.at/enrima wss.xsd">
+   <modelSpec>
                 <id>1</id>
                 <shortName>opera</shortName>
                 <name>enrima operational model spec</name>
@@ -45,4 +49,4 @@
                     <unit>Celsius</unit>
                 </entitySpec>
  </modelSpec>
-  
+</e:getSMSResponse>
