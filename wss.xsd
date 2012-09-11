@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima"
-    xmlns:i="http://www.ime.iiasa.ac.at/enrima/model/instance"
-    xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
+    xmlns:i="http://www.ime.iiasa.ac.at/model/instance"
+    xmlns:m="http://www.ime.iiasa.ac.at/model/spec"
+    xmlns:a="http://www.ime.iiasa.ac.at/model/analysis"
     targetNamespace="http://www.ime.iiasa.ac.at/enrima">
-    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/instance" schemaLocation="data.xsd"/>
-    <xs:import namespace="http://www.ime.iiasa.ac.at/enrima/model/spec" schemaLocation="sms.xsd"/>
-    
+    <xs:import namespace="http://www.ime.iiasa.ac.at/model/instance" schemaLocation="data.xsd"/>
+    <xs:import namespace="http://www.ime.iiasa.ac.at/model/spec" schemaLocation="sms.xsd"/>
+    <xs:import namespace="http://www.ime.iiasa.ac.at/model/analysis" schemaLocation="ana.xsd"/>
     <xs:element name="getSMSRequest">
         <xs:complexType>
             <xs:all>
-                <xs:element name="idSMS" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idModelSpec" type="xs:int" minOccurs="1" maxOccurs="1" />
             </xs:all>
         </xs:complexType>
     </xs:element>
@@ -55,11 +56,10 @@
         </xs:complexType>
     </xs:element>
     
-  
     <xs:element name="storeSetMembersRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="idModelUpdate" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idModeldata" type="xs:int" minOccurs="1" maxOccurs="1" />
                 <xs:element name="idSetSpec" type="xs:int" minOccurs="1" maxOccurs="1" />
                 <xs:element name="setMembers" type="i:setMembers" minOccurs="1" maxOccurs="unbounded"/>
             </xs:sequence>
@@ -68,16 +68,16 @@
     <xs:element name="storeSetMembersResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="result" type="xs:string" />
+                <xs:element name="status" type="e:responseStatus" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="msg" type="xs:string" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
        
-    
     <xs:element name="storeEntityValuesRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="idModelUpdate" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idModeldata" type="xs:int" minOccurs="1" maxOccurs="1" />
                 <xs:element name="tupleValue" type="i:tupleValue"  minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
         </xs:complexType>
@@ -85,10 +85,145 @@
     <xs:element name="storeEntityValuesResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="result" type="xs:string" />
+                <xs:element name="status" type="e:responseStatus" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="msg" type="xs:string" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-
+    
+    <xs:element name="changeSMSStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelSpec" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="status" type="m:status" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="changeSMSStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+              <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+    <xs:element name="changeModelInstanceStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="status" type="m:status" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="changeModelInstanceStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defineInstanceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="modelInstance" type="i:modelInstance" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defineInstanceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+    <xs:element name="getDataSummaryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelData" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getDataSummaryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="modelData" type="i:modelData" minOccurs="1" maxOccurs="1" />
+                <xs:element name="modelInstance" type="i:modelInstance" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+   
+   
+    <xs:element name="defineAnalysisRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="analysis" type="a:analysis" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defineAnalysisResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="definePreferenceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idAnalysis" type="xs:int" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="preference" type="a:preference" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="definePreferenceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:element name="runSolverRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idAnalysis" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="runSolverResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="runScenarioRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idAnalysis" type="xs:int" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="runScenarioResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="responseStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="INVALID_ITERATOR"/>
+            <xs:enumeration value="INVALID_SET_MEMBER"/>
+            <xs:enumeration value="INVALID_VALUE"/>
+            <xs:enumeration value="BOUND_VIOLATION"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>

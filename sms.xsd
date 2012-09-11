@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:m="http://www.ime.iiasa.ac.at/enrima/model/spec"
-    targetNamespace="http://www.ime.iiasa.ac.at/enrima/model/spec">
+    xmlns:m="http://www.ime.iiasa.ac.at/model/spec"
+    targetNamespace="http://www.ime.iiasa.ac.at/model/spec">
 
     <xs:complexType name="modelSpec">
         <xs:sequence>
@@ -24,8 +24,16 @@
             <xs:element name="name" type="m:name" minOccurs="0" maxOccurs="1"/>
             <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
             <xs:element name="type" type="m:setSpecType"/>
-            <!--for index sets-->
-            <xs:element name="iteratorContainer" type="m:iteratorContainer" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="idx" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>default index name (for main set only)</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="iteratorContainer" type="m:iteratorContainer" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>for index set only</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     
@@ -37,12 +45,26 @@
             <xs:element name="description" type="m:description" minOccurs="0" maxOccurs="1"/>
             <xs:element name="idLowerBound" type="xs:int" minOccurs="0" maxOccurs="1"/>
             <xs:element name="idUpperBound" type="xs:int" minOccurs="0" maxOccurs="1"/>
-            <xs:element name="constantValue" type="xs:double" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="constantValue" type="xs:double" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>optional, only for constant type of entity</xs:documentation>
+                </xs:annotation>
+            </xs:element>
             <xs:element name="iteratorContainer" type="m:iteratorContainer" minOccurs="0" maxOccurs="1"/>
             <xs:element name="role" type="m:entityRole" minOccurs="0" maxOccurs="1"/>
             <xs:element name="mathType" type="m:mathType" minOccurs="0" maxOccurs="1"/>
             <xs:element name="unit" type="xs:string" minOccurs="0" maxOccurs="1"/>
             <xs:element name="formula" type="xs:string" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>specification of the data source (optional, but very useful for organizing data management processes</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="group" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>for grouping parameters (optional, but very useful for management of the data access rights).</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -52,11 +74,12 @@
         </xs:sequence>
     </xs:complexType>
 
+
     <xs:simpleType name="status">
         <xs:restriction base="xs:string">
             <xs:enumeration value="EDIT"/>
             <xs:enumeration value="TEST"/>
-            <xs:enumeration value="COMMIT"/>
+            <xs:enumeration value="COMMITTED"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="setSpecType">
@@ -67,18 +90,25 @@
     </xs:simpleType>
     <xs:simpleType name="entityRole">
         <xs:restriction base="xs:string">
-            <!-- Parameters -->
             <xs:enumeration value="CONSTANT"/>
-            <!-- Parameters -->
             <xs:enumeration value="PARAMETER"/>
-            <!-- Variables -->
             <xs:enumeration value="DECISION_VAR"/>
             <xs:enumeration value="EXTERNAL_DECISION_VAR"/>
             <xs:enumeration value="OUTCOME_VAR"/>
             <xs:enumeration value="AUXILIARY_VAR"/>
-            <!-- relations -->
             <xs:enumeration value="ASSIGNMENT"/>
             <xs:enumeration value="CONSTRAINT"/>
+            <xs:enumeration value="A_VARIABLE">
+                <xs:annotation>
+                    <xs:documentation>any type of variable: DECISION_VAR, EXTERNAL_DECISION_VAR,OUTCOME_VAR,or AUXILIARY_VAR</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="A_FORMULA">
+                <xs:annotation>
+                    <xs:documentation>any type of formula: ASSIGNMENT or CONSTRAINT</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="mathType">
