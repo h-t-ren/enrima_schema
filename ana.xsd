@@ -16,6 +16,9 @@
     </xs:complexType>
     
     <xs:complexType name="preference">
+        <xs:annotation>
+            <xs:documentation>need to be discussed within the developers group</xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="idEntitySpec" type="xs:int" minOccurs="1" maxOccurs="1"/>
             <xs:element name="preferenceType" type="a:preferenceType" minOccurs="1" maxOccurs="1"/>
@@ -24,6 +27,9 @@
     </xs:complexType>
     
     <xs:complexType name="task">
+        <xs:annotation>
+            <xs:documentation>need to be discussed within the developers group</xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="id" type="xs:int" />
             <xs:element name="idAnalysis" type="xs:int" minOccurs="1" maxOccurs="1"/>
@@ -35,6 +41,9 @@
     </xs:complexType>
     
     <xs:simpleType name="preferenceType">
+        <xs:annotation>
+            <xs:documentation>need to be discussed within the developers group</xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="MIN"/>
             <xs:enumeration value="MAX"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:e="http://www.ime.iiasa.ac.at/enrima"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:w="http://www.ime.iiasa.ac.at/enrima"
     xmlns:i="http://www.ime.iiasa.ac.at/model/instance"
     xmlns:m="http://www.ime.iiasa.ac.at/model/spec"
     xmlns:a="http://www.ime.iiasa.ac.at/model/analysis"
@@ -68,7 +68,7 @@
     <xs:element name="storeSetMembersResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="status" type="e:responseStatus" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="status" type="w:responseStatus" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="msg" type="xs:string" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -85,7 +85,7 @@
     <xs:element name="storeEntityValuesResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="status" type="e:responseStatus" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="status" type="w:responseStatus" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="msg" type="xs:string" minOccurs="0" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -145,6 +145,9 @@
         </xs:complexType>
     </xs:element>
     <xs:element name="getDataSummaryResponse">
+        <xs:annotation>
+            <xs:documentation>not complete yet, need to be discussed with the developers group</xs:documentation>
+        </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="modelData" type="i:modelData" minOccurs="1" maxOccurs="1" />
