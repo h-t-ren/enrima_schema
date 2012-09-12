@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:getSMSResponse xmlns:a="http://www.ime.iiasa.ac.at/model/analysis"
+ xmlns:i="http://www.ime.iiasa.ac.at/model/instance"
+ xmlns:m="http://www.ime.iiasa.ac.at/model/spec"
+ xmlns:w="http://www.ime.iiasa.ac.at/enrima"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.ime.iiasa.ac.at/enrima ../wss.xsd">
+    <modelSpec>
+        <id>1</id>
+        <shortName>dm1</shortName>
+        <name>Deterministic1</name>
+        <description>'Deterministic1' Symbolic Model Specication, example provided by Emilio on August 13, 2012</description>
+        <status>COMMITTED</status>
+        <setSpec>
+            <id>1</id>
+            <shortName>I</shortName>
+            <name>Technology</name>
+            <type>COLLECTION</type>
+            <idx>i</idx>
+        </setSpec>
+        <setSpec>
+            <id>2</id>
+            <shortName>J</shortName>
+            <name>Period</name>
+            <description>four seasions</description>
+            <type>COLLECTION</type>
+            <idx>j</idx>
+        </setSpec>
+        <setSpec>
+            <id>3</id>
+            <shortName>T</shortName>
+            <name>Year</name>
+            <type>COLLECTION</type>
+            <idx>t</idx>
+        </setSpec>
+        <entitySpec>
+            <id>1</id>
+            <shortName>LT</shortName>
+            <name>Lifetime</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>years</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>2</id>
+            <shortName>D</shortName>
+            <name>Demand Level</name>
+            <iteratorContainer>
+                <idSetSpec>2</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>kW</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>3</id>
+            <shortName>G</shortName>
+            <name>Technology Availability</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>2</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>kW/kW</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>4</id>
+            <shortName>CI</shortName>
+            <name>Investment Cost</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>EUR/kWh</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>5</id>
+            <shortName>CO</shortName>
+            <name>Operational Cost</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>2</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>EUR/kWh</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>6</id>
+            <shortName>DT</shortName>
+            <name>Duration time of period</name>
+            <iteratorContainer>
+                <idSetSpec>2</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>PARAMETER</role>
+            <mathType>REAL</mathType>
+            <unit>hours</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>7</id>
+            <shortName>x</shortName>
+            <name>Capacity to be installed</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>A_VARIABLE</role>
+            <mathType>REAL</mathType>
+            <unit>kW</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>8</id>
+            <shortName>y</shortName>
+            <name>Production plan</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>2</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>A_VARIABLE</role>
+            <mathType>REAL</mathType>
+            <unit>kW</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>9</id>
+            <shortName>s</shortName>
+            <name>Available capacity</name>
+            <iteratorContainer>
+                <idSetSpec>1</idSetSpec>
+                <idSetSpec>3</idSetSpec>
+            </iteratorContainer>
+            <role>A_VARIABLE</role>
+            <mathType>REAL</mathType>
+            <unit>kW</unit>
+        </entitySpec>
+        <entitySpec>
+            <id>10</id>
+            <shortName>z</shortName>
+            <name>Total cost</name>
+            <role>A_VARIABLE</role>
+            <mathType>REAL</mathType>
+            <unit>EUR</unit>
+        </entitySpec>
+    </modelSpec>
+</w:getSMSResponse>
