@@ -25,7 +25,7 @@
     <xs:element name="getEntityValuesRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idModelData" type="xs:int" minOccurs="1" maxOccurs="1" />
                 <xs:element name="entityShortName" type="xs:string" minOccurs="1" maxOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
@@ -39,10 +39,29 @@
         </xs:complexType>
     </xs:element>
     
+    <xs:element name="getGroupEntityValuesRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelData" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="group" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getGroupEntityValuesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="idModelData" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="entitySpec" type="m:entitySpec" minOccurs="0" maxOccurs="unbounded" />
+                <xs:element name="groupEntityValues" type="i:groupEntityValues"  minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
     <xs:element name="getSetMembersRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="idModelInstance" type="xs:int" minOccurs="1" maxOccurs="1" />
+                <xs:element name="idModelData" type="xs:int" minOccurs="1" maxOccurs="1" />
                 <xs:element name="setShortName" type="xs:string" minOccurs="1" maxOccurs="1"/>
                 <xs:element name="tupleMember" type="i:memberDic" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
@@ -122,6 +141,23 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:element name="defineModelDataRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="modelData" type="i:modelData" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="defineModelDataResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string" minOccurs="1" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
     <xs:element name="defineInstanceRequest">
         <xs:complexType>
             <xs:sequence>
